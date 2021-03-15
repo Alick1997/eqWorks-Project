@@ -1,0 +1,38 @@
+
+.FlexDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Padding{
+    padding: 20px;
+}
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    align-items: center;
+    width: 80%;
+}
+
+.ModalContainer {
+    width: 90%;
+    height: 80%;
+
+}
+
+.ClickableText {
+    color : blue;
+    text-decoration: underline;
+}
+
+.SelectedRow {
+    background-color: rgb(38, 170, 219, 0.1);
+    border-radius: 5px;
+}
+
+
+
+
