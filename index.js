@@ -14,9 +14,11 @@ const devVal = {
   port: '5432'
 }
 
-const connectionString = process.env.NODE_ENV === 'production' ? process.env.DATABASE_URL : devVal
+const connectionString = {
+  connectionString: process.env.DATABASE_URL
+}
 
-const pool = new pg.Pool(connectionString)
+const pool = new pg.Pool(process.env.NODE_ENV === 'production' ? connectionString : devVal)
 
 const queryHandler = (req, res, next) => {
   const id = parseInt(req.params.id);
