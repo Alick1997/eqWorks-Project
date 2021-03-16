@@ -1,7 +1,7 @@
-import express from 'express'
-import pg from 'pg'
+const express = require('express');
+const pg = require('pg');
 
-import rateLimiter from './rateLimiter.js'
+const rateLimiter= require('./rateLimiter.js');
 
 const app = express()
 app.use(rateLimiter)

@@ -1,6 +1,5 @@
 {
   "name": "ws-product-nodejs",
-  "type": "module",
   "version": "0.1.0",
   "description": "API work samples",
   "main": "index.js",
