@@ -20,7 +20,8 @@ export default function  customRedisRateLimiter(req, res, next){
       const currentRequestTime = moment();
       console.log('recprd is: ' + record);
       //  if no record is found , create a new record for user and store to redis
-      if (record == null) {
+      if (record === null) {
+        console.log('new record')
         let newRecord = [];
         let requestLog = {
           requestTimeStamp: currentRequestTime.unix(),
@@ -30,6 +31,7 @@ export default function  customRedisRateLimiter(req, res, next){
         redisClient.set(req.ip, JSON.stringify(newRecord));
         next();
       }
+      console.log('this should not run if record is: ' + record)
       // if record is found, parse it's value and calculate number of requests users has made within the last window
       let data = JSON.parse(record);
       let windowStartTimestamp = moment()
