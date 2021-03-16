@@ -4,7 +4,7 @@ const pg = require('pg');
 const rateLimiter= require('./rateLimiter.js');
 
 const app = express()
-//app.use(rateLimiter)
+app.use(rateLimiter)
 
 const devVal = {
   user: 'readonly',
@@ -14,13 +14,7 @@ const devVal = {
   port: '5432'
 }
 
-const prodSettings = {
-  user: process.env.DB_User,
-  host: process.env.DB_Host,
-  password: process.env.DB_Password,
-  database: process.env.DB_Name,
-  port: process.env.DB_Port
-}
+
 
 const pool = new pg.Pool()
 
