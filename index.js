@@ -22,7 +22,7 @@ const prodSettings = {
   port: process.env.DB_Port
 }
 
-const pool = new pg.Pool(process.env.NODE_ENV === 'production' ? prodSettings : devVal)
+const pool = new pg.Pool()
 
 const queryHandler = (req, res, next) => {
   const id = parseInt(req.params.id);
@@ -35,7 +35,6 @@ const queryHandler = (req, res, next) => {
 
 app.get('/', (req, res) => {
   res.send('Welcome to EQ Works 😎')
-  console.log(prodSettings)
   console.log('Called')
 })
 
