@@ -1,7 +1,7 @@
 import moment from 'moment';
 import redis from 'redis'
 
-const redisClient = redis.createClient();
+const redisClient = redis.createClient(process.env.REDIS_URL);
 const WINDOW_SIZE_SECS = 10;
 const MAXREQ = 100;
 const WINDOW_LOG_INTERVAL_IN_HOURS = 1;
