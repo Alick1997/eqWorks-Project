@@ -4,9 +4,8 @@ const pg = require('pg');
 const rateLimiter= require('./rateLimiter.js');
 
 const app = express()
-app.use(rateLimiter)
-// configs come from standard PostgreSQL env vars
-// https://www.postgresql.org/docs/9.6/static/libpq-envars.html
+//app.use(rateLimiter)
+
 const pool = new pg.Pool({
   user: 'readonly',
   host: 'work-samples-db.cx4wctygygyq.us-east-1.rds.amazonaws.com',
