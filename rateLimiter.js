@@ -18,7 +18,7 @@ export default function  customRedisRateLimiter(req, res, next){
     redisClient.get(req.ip, (err, record)=> {
       if (err) throw err;
       const currentRequestTime = moment();
-      console.log(record);
+      console.log('recprd is: ' + record);
       //  if no record is found , create a new record for user and store to redis
       if (record == null) {
         let newRecord = [];
