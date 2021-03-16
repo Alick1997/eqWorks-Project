@@ -14,11 +14,15 @@ const devVal = {
   port: '5432'
 }
 
-const connectionString = {
-  connectionString: process.env.DATABASE_URL
+const prodSettings = {
+  user: process.env.DB_User,
+  host: process.env.DB_Host,
+  password: process.env.DB_Password,
+  database: process.env.DB_Name,
+  port: process.env.DB_Port
 }
 
-const pool = new pg.Pool(process.env.NODE_ENV === 'production' ? connectionString : devVal)
+const pool = new pg.Pool(process.env.NODE_ENV === 'production' ? prodSettings : devVal)
 
 const queryHandler = (req, res, next) => {
   const id = parseInt(req.params.id);
@@ -31,7 +35,6 @@ const queryHandler = (req, res, next) => {
 
 app.get('/', (req, res) => {
   res.send('Welcome to EQ Works 😎')
-  console.log(connectionString)
   console.log('Called')
 })
 
