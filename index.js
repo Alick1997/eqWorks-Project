@@ -6,13 +6,17 @@ const rateLimiter= require('./rateLimiter.js');
 const app = express()
 //app.use(rateLimiter)
 
-const pool = new pg.Pool({
+const devVal = {
   user: 'readonly',
   host: 'work-samples-db.cx4wctygygyq.us-east-1.rds.amazonaws.com',
   password: 'w2UIO@#bg532!',
   database: 'work_samples',
   port: '5432'
-})
+}
+
+const connectionString = process.env.NODE_ENV === 'production' ? process.env.DATABASE_URL : devVal
+
+const pool = new pg.Pool(connectionString)
 
 const queryHandler = (req, res, next) => {
   const id = parseInt(req.params.id);
