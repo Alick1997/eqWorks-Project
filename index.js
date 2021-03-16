@@ -1,20 +1,16 @@
 const express = require('express');
 const pg = require('pg');
+const cors = require('cors')
 
 const rateLimiter= require('./rateLimiter.js');
 
 const app = express()
+
 app.use(rateLimiter)
+app.use(cors())
 
-const devVal = {
-  user: 'readonly',
-  host: 'work-samples-db.cx4wctygygyq.us-east-1.rds.amazonaws.com',
-  password: 'w2UIO@#bg532!',
-  database: 'work_samples',
-  port: '5432'
-}
-
-
+if(process.env.NODE_ENV === 'production')
+  app.use(express.static("./Client/build"))
 
 const pool = new pg.Pool()
 
@@ -133,3 +129,4 @@ process.on('unhandledRejection', (reason, p) => {
   console.log('Unhandled Rejection at: Promise', p, 'reason:', reason)
   process.exit(1)
 })
+

@@ -1,7 +1,6 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import {MapContainer,Marker,TileLayer, Popup,Tooltip} from 'react-leaflet';
 import {ButtonGroup,Button} from '@material-ui/core';
-import {getPOIStats,getPOIEvents} from '../../api'
 import './Map.css'
 
 
