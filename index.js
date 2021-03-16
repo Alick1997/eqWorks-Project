@@ -29,6 +29,7 @@ const queryHandler = (req, res, next) => {
 
 app.get('/', (req, res) => {
   res.send('Welcome to EQ Works 😎')
+  console.log(connectionString)
   console.log('Called')
 })
 
